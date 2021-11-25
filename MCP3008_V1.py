@@ -75,6 +75,17 @@ def GASsensor():
         MCP3008_Ch[Number] = 0 ;   #print("no pollution ")
     if (AV>int(Sensor[2])):        
         MCP3008_Ch[Number] = 1 ;   #print("Air pollution")
+
+def Dustsensor():
+    global MCP3008_Ch  
+    Number=7
+    Sensor=["Dust-sensor","30","100"] #NAME , <Value=0 , >Value=1  
+#Below no need to adjust
+    AV = int(("{%s}"%Number).format(*values)); #print(AV)
+    if (AV<int(Sensor[1])):
+        MCP3008_Ch[Number] = 0 ;   #print("no dust ")
+    if (AV>int(Sensor[2])):        
+        MCP3008_Ch[Number] = 1 ;   #print("pm2.5 hight")
         
 def Sort_List():
     CTsensor()
@@ -83,6 +94,7 @@ def Sort_List():
     Firesensor()
     Watersensor()
     GASsensor()
+    Dustsensor()
     All_Sensor = [MCP3008_Ch[0],MCP3008_Ch[1],MCP3008_Ch[2],MCP3008_Ch[3],MCP3008_Ch[4],MCP3008_Ch[5],MCP3008_Ch[6],MCP3008_Ch[7]]
     print(All_Sensor)    
 ####### Main program loop.#######
